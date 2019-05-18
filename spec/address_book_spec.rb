@@ -44,13 +44,13 @@
      it "responds to entries from entries_2" do
        book.import_from_csv("entries_2.csv")
        entry_one = book.entries[0]
-       check_entry(entry_one, "Buck_Pucker", "333-333-3333", "buck@email.com")
+       check_entry(entry_one, "Benny_Liquid", "444-444-4444", "benny@email.com")
      end
 
      it "imports the 2nd entry from entries_2" do
        book.import_from_csv("entries_2.csv")
        entry_two = book.entries[1]
-       check_entry(entry_two, "Benny_Liquid", "444-444-4444", "benny@email.com")
+       check_entry(entry_two, "Buck_Pucker", "333-333-3333", "buck@email.com")
      end
 
      it "imports the 3rd entry from entries_2" do
