@@ -14,6 +14,7 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
     puts "5 - Exit"
+    puts "6 - Nuclear option..."
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -36,9 +37,10 @@ class MenuController
         main_menu
       when 5
         puts "Good-bye!"
-        # #8
         exit(0)
-      # #9
+      when 6
+        system "clear"
+        nuka_quantum
       else
         system "clear"
         puts "Sorry, that is not a valid input"
@@ -102,6 +104,27 @@ class MenuController
     def delete_entry(entry)
       address_book.entries.delete(entry)
       puts "#{entry.name} has been deleted"
+    end
+
+    def nuka_quantum
+      puts "Are you sure you wish to proceed? You will delete ALL of your entries, and the Commonwealth might dislike that."
+      puts "y - yes"
+      puts "n - no!"
+      selection = gets.chomp
+      if (selection == "y")
+        address_book.entries.clear
+        system "clear"
+        puts "All of your entries have been deleted. Everyone disliked that."
+        main_menu
+      elsif (selection == "n")
+        system "clear"
+        puts "You chose not to delete all of your contacts. You have gained +5 Intelligence and +5 Charisma"
+        main_menu
+      else
+        system "clear"
+        puts "#{selection} is not a valid entry."
+        nuka_quantum
+      end
     end
 
     def read_csv
